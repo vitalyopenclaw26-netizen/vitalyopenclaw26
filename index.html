@@ -1,12 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vitalii.ai</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitalii.ai Test Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f766e);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      max-width: 720px;
+      margin: 24px;
+      padding: 40px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      text-align: center;
+    }
+    h1 {
+      font-size: 52px;
+      margin: 0 0 12px;
+    }
+    p {
+      font-size: 20px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.88);
+      margin: 0 0 18px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      font-size: 14px;
+      letter-spacing: .04em;
+    }
+  </style>
 </head>
 <body>
-  <h1>Vitalii.ai</h1>
-  <p>Starter site repository created via OpenClaw.</p>
+  <div class="card">
+    <div class="pill">OpenClaw test deployment</div>
+    <h1>Vitalii.ai</h1>
+    <p>Тестовый сайт загружен в публичный репозиторий.</p>
+    <p>Если ты видишь эту страницу, значит GitHub-репозиторий обновляется нормально.</p>
+  </div>
 </body>
 </html>
