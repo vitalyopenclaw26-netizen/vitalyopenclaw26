@@ -1,12 +1,292 @@
+/* ---------------------------------------------------------------
+   Camble Design System — Core tokens
+   Performance-marketing creative kit for Camble, a random-video-chat
+   / "meet new people live" consumer app. Paid-acquisition first:
+   banners + interstitials + end cards, not product UI.
+   --------------------------------------------------------------- */
+
+/* ---------- Fonts ----------
+   BRAND TYPE SYSTEM (authoritative)
+   • Headlines / display / wordmark-adjacent UI: **Geologica** (400–900).
+   • Body / UI / micro-labels / legal: **Inter** (400–900).
+   Never substitute. Never italicise. Weight carries all hierarchy. */
+@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap");
+
 :root {
-  --font-sans: Inter, Arial, sans-serif;
-  --font-display: Inter, Arial, sans-serif;
-  --white: #ffffff;
-  --ink-900: #080b14;
-  --coral-400: #ff6f88;
-  --coral-500: #fe375b;
-  --coral-600: #de2043;
-  --live-green: #4cff93;
-  --radius-pill: 9999px;
-  --glow-coral-lg: 0 12px 34px rgba(254,55,91,0.35);
+  /* ==========================================================
+     COLORS
+     ========================================================== */
+
+  /* ---- Coral: primary brand surface ----
+     The campaign lives on this gradient. Everything high-intent
+     (CTA background, banner fill, notification dot) is coral.
+     Brand-book authoritative hex is --coral-500 = #FE375B (official
+     "Camee" brandmark fill). The --coral-600 step below is the darker
+     stop used in banner gradients and button hover. */
+  --coral-500: #FE375B;   /* base brand coral — THE hero color (brand book) */
+  --coral-600: #E8364A;   /* darker coral, pairs with 500 for gradients + hover */
+  --coral-400: #FF6B7A;   /* lighter coral — optional gradient top-end */
+  --coral-700: #C72A3E;   /* pressed / deep shadow */
+
+  /* ---- Ink: dark foreground + dark surface ----
+     Brand-book authoritative text / glyph ink is #04060F (near-black with
+     a faint cool cast). --ink-900 is the canonical text-on-light color.
+     --ink-surface is the original Roulette dark BG — kept for that concept
+     and for any inverse logo-on-dark composition. */
+  --ink-900: #04060F;      /* brand text ink — use for body, wordmark on light */
+  --ink-surface: #1A1A2E;  /* near-black background for Roulette / inverse UI */
+  --ink-800: #23233A;      /* subtle elevation on ink surface */
+  --ink-700: #2E2E47;
+
+  /* ---- Accent: magenta→purple gradient used on the "Hand Picker" concept ----
+     Reference creative shows a hot-pink→purple bottom panel with magenta
+     dividers. It's a specific *concept*, not the brand core — keep contained. */
+  --magenta-500: #E62E69;
+  --magenta-600: #DF2869;
+  --purple-700: #99158B;
+  --purple-800: #8B1E6D;
+  --purple-900: #61165A;
+
+  /* ---- Neutrals ---- */
+  --white: #FFFFFF;
+  --white-a90: rgba(255, 255, 255, 0.90);
+  --white-a70: rgba(255, 255, 255, 0.70);
+  --white-a50: rgba(255, 255, 255, 0.50);
+  --white-a20: rgba(255, 255, 255, 0.20);
+  --white-a10: rgba(255, 255, 255, 0.10);
+  --black: #000000;
+  --black-a60: rgba(0, 0, 0, 0.60);
+  --black-a40: rgba(0, 0, 0, 0.40);
+  --black-a20: rgba(0, 0, 0, 0.20);
+
+  /* ---- Supporting UI greys (for internal tools / picker UI) ---- */
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-500: #6B7280;
+  --gray-700: #374151;
+  --gray-900: #111827;
+
+  /* ---- Signal colors ---- */
+  --live-green: #4ADE80;           /* "X online now" pulse dot */
+  --live-green-glow: 0 0 5px #4ADE80;
+  --pointer-skin: #FFD2B1;         /* animated hand cursor fill on Picker concept */
+
+  /* ==========================================================
+     SEMANTIC COLOR ROLES
+     Use these in components — they route to the brand colors above.
+     ========================================================== */
+  --bg-primary: var(--coral-500);
+  --bg-primary-gradient: linear-gradient(135deg, var(--coral-500) 0%, var(--coral-600) 100%);
+  --bg-primary-gradient-soft: linear-gradient(135deg, var(--coral-400) 0%, var(--coral-500) 100%);
+  --bg-ink: var(--ink-900);
+  --bg-picker-panel: linear-gradient(180deg, var(--magenta-500) 0%, var(--purple-700) 100%);
+
+  --fg-on-primary: var(--white);
+  --fg-on-ink: var(--white);
+  --fg-secondary-on-primary: var(--white-a90);
+  --fg-tertiary-on-ink: var(--white-a50);
+
+  /* CTA — white pill with coral text is THE brand pattern */
+  --cta-bg: var(--white);
+  --cta-fg: var(--coral-500);
+  --cta-bg-alt: var(--coral-500);  /* only on dark (ink) backgrounds */
+  --cta-fg-alt: var(--white);
+
+  /* ==========================================================
+     TYPE
+     Mobile banners must fit copy into 50–90px of height, so the
+     system carries very large displays AND very small mono lines.
+     ========================================================== */
+  /* Body / UI — Inter everywhere non-headline. */
+  --font-sans:    "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+  /* Display / headlines — Geologica. Use on every banner headline, every
+     slide title, every CTA micro-cap ("Camble With Me"), every big-number. */
+  --font-display: "Geologica", "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  /* Legacy alias so existing cells keep resolving. */
+  --font-head:    var(--font-display);
+
+  /* Weights used in creatives: 400 body, 600 label, 700 headline, 800 shout, 900 for big-number callouts */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+  --fw-black: 900;
+
+  /* Size scale — banner-native, not "web-article" native */
+  --fs-8:  8px;    /* mobile banner footer / legal */
+  --fs-9:  9px;
+  --fs-10: 10px;   /* "2,000+ girls online" on 320×50 */
+  --fs-11: 11px;
+  --fs-12: 12px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-22: 22px;   /* 300×250 headline */
+  --fs-24: 24px;
+  --fs-28: 28px;   /* 320×480 headline */
+  --fs-32: 32px;   /* 320×512 headline */
+  --fs-48: 48px;
+  --fs-60: 60px;   /* 640×1138 headline */
+  --fs-80: 80px;   /* 768×1024 headline */
+
+  /* Line-heights — banners want tight, 1.05–1.2. UI wants 1.4. */
+  --lh-tight: 1.05;
+  --lh-snug: 1.15;
+  --lh-base: 1.4;
+  --lh-relaxed: 1.6;
+
+  /* Letter-spacing — uppercase micro-labels get +tracking, display gets tight */
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.05em;  /* "Camble With Me" tagline, "READY TO MATCH INSTANTLY" */
+  --tracking-widest: 0.1em;
+
+  /* ==========================================================
+     SEMANTIC TYPE TOKENS
+     Use these in components.
+     ========================================================== */
+  --display-hero {
+    font-family: var(--font-sans);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-80);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  /* ==========================================================
+     SPACING
+     ========================================================== */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ==========================================================
+     RADII
+     Pills everywhere. Brand identity pushes full-round CTAs.
+     ========================================================== */
+  --radius-0: 0;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-3xl: 48px;
+  --radius-pill: 9999px;   /* default for CTA, tagline chip, live chip */
+  --radius-circle: 50%;    /* avatars, the matching ring */
+
+  /* ==========================================================
+     SHADOWS
+     Two flavors: soft product shadow + glowing coral aura on CTA.
+     ========================================================== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.18);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.22);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+
+  /* Coral glow — CTA on ink background uses this as its ambient shadow */
+  --glow-coral: 0 0 15px rgba(240, 78, 94, 0.40);
+  --glow-coral-lg: 0 0 40px rgba(240, 78, 94, 0.40);
+
+  /* Inner bottom panel drop — "Picker" concept uses this for the magenta tray */
+  --shadow-panel-up: 0 -10px 30px rgba(0, 0, 0, 0.5);
+
+  /* ==========================================================
+     BORDERS
+     ========================================================== */
+  --border-1: 1px solid var(--white-a20);
+  --border-2-coral: 2px solid var(--coral-500);
+  --border-4-white: 4px solid var(--white);
+  --border-divider-magenta: 3px solid var(--magenta-600);
+
+  /* ==========================================================
+     MOTION
+     Animations are subtle, looping, always framed around "live":
+     pulses, spins, and 4-second "cursor picks someone" cycles.
+     ========================================================== */
+  --dur-pulse: 2s;
+  --dur-match-spin: 1.4s;    /* match-ring rotate */
+  --dur-picker-loop: 4s;     /* "Hand Picker" cursor cycle */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ==========================================================
+   SEMANTIC ELEMENT STYLES
+   Drop-in for a real HTML doc (not always used by the React ad
+   creatives, but reference for slides/pitch decks).
+   ========================================================== */
+
+body.camble, .camble {
+  font-family: var(--font-sans);
+  color: var(--white);
+  background: var(--coral-500);
+  -webkit-font-smoothing: antialiased;
+}
+
+.camble h1, .camble .h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-60);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+}
+.camble h2, .camble .h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-32);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  margin: 0;
+}
+.camble h3, .camble .h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-22);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  margin: 0;
+}
+.camble p, .camble .p {
+  font-size: var(--fs-14);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-base);
+  margin: 0;
+}
+.camble .tagline {
+  font-size: var(--fs-10);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: none;
+  opacity: 0.9;
+}
+.camble .legal {
+  font-size: var(--fs-10);
+  font-weight: var(--fw-medium);
+  opacity: 0.8;
+}
+.camble .big-number {
+  font-family: var(--font-display);
+  font-size: var(--fs-48);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight);
+}
+.camble .micro-caps {
+  font-size: var(--fs-10);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  opacity: 0.7;
 }
