@@ -1,0 +1,12 @@
+:root {
+  --font-sans: Inter, Arial, sans-serif;
+  --font-display: Inter, Arial, sans-serif;
+  --white: #ffffff;
+  --ink-900: #080b14;
+  --coral-400: #ff6f88;
+  --coral-500: #fe375b;
+  --coral-600: #de2043;
+  --live-green: #4cff93;
+  --radius-pill: 9999px;
+  --glow-coral-lg: 0 12px 34px rgba(254,55,91,0.35);
+}
